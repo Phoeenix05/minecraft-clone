@@ -1,0 +1,5 @@
+/build
+/.vscode
+
+/minecraft-clone*
+/.DS_Store
