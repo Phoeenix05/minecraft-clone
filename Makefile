@@ -3,7 +3,7 @@ CXXFLAGS=-I./src -g -Wall -std=c++17
 LIBS = -lglfw -lglew -framework OpenGL
 
 OUTDIR = build
-_OBJ = main.o program.o window.o
+_OBJ = main.o program.o window.o shader.o
 OBJ = $(patsubst %,$(OUTDIR)/%,$(_OBJ))
 
 DEPS = $()
@@ -25,6 +25,9 @@ $(OUTDIR)/program.o: src/core/program.cpp src/core/program.hpp
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 $(OUTDIR)/window.o: src/core/window.cpp src/core/window.hpp
+	$(CXX) -c -o $@ $< $(CXXFLAGS)
+
+$(OUTDIR)/shader.o: src/graphics/shader.cpp src/graphics/shader.hpp
 	$(CXX) -c -o $@ $< $(CXXFLAGS)
 # End Files
 

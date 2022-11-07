@@ -1,5 +1,6 @@
 /build
 /.vscode
+/diagnostics.trace
 
 /minecraft-clone*
 /.DS_Store

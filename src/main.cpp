@@ -1,12 +1,13 @@
 #include <iostream>
 
-#include <glm/glm.hpp>
-#include <glm/gtx/transform.hpp>
+#define GLEW_STATIC
+#define GL_SILENCE_DEPRECATION
 
 #include "log.hpp"
 #include "core/program.hpp"
 
-int main() {
+int main()
+{
   auto l_application = std::make_unique<Application>();
   l_application->run();
 }
