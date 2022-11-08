@@ -34,6 +34,7 @@ Window::Window(uint32_t w, uint32_t h, std::string title)
 
 void Window::clear()
 {
+  glClearColor(0.1f, 0.1f, 0.1f, 1);
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 

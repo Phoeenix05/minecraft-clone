@@ -15,20 +15,24 @@ $(shell mkdir -p $(OUTDIR))
 
 # SECTION - Executable
 $(BIN)-$(ARCH): $(OBJ)
-	$(CXX) -o $@ $^ $(CXXFLAGS) $(LIBS)
+	$(CXX) -o $@ build/*.o $(CXXFLAGS) $(LIBS)
 
 # SECTION - Files
 $(OUTDIR)/main.o: src/main.cpp
-	$(CXX) -c -o $@ $< $(CXXFLAGS)
+	@echo $<
+	@$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 $(OUTDIR)/program.o: src/core/program.cpp src/core/program.hpp
-	$(CXX) -c -o $@ $< $(CXXFLAGS)
+	@echo $<
+	@$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 $(OUTDIR)/window.o: src/core/window.cpp src/core/window.hpp
-	$(CXX) -c -o $@ $< $(CXXFLAGS)
+	@echo $<
+	@$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 $(OUTDIR)/shader.o: src/graphics/shader.cpp src/graphics/shader.hpp
-	$(CXX) -c -o $@ $< $(CXXFLAGS)
+	@echo $<
+	@$(CXX) -c -o $@ $< $(CXXFLAGS)
 # End Files
 
 release: CXXFLAGS += -DRELEASE

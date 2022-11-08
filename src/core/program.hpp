@@ -4,7 +4,12 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtx/transform.hpp>
+
+#include <iostream>
 #include <memory>
+#include <vector>
 
 #include "window.hpp"
 #include "graphics/shader.hpp"

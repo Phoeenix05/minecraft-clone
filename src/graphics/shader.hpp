@@ -10,7 +10,8 @@
 
 #include "log.hpp"
 
-class Shader {
+class Shader
+{
 private:
   GLuint m_programID;
 
