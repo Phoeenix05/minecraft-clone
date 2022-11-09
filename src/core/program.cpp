@@ -8,12 +8,12 @@ Application::Application()
 
 void Application::run()
 {
-  glm::mat4 view = glm::lookAt(
+  glm::mat4 l_view = glm::lookAt(
       glm::vec3(0, 0, 8), // position - Camera's position (XYZ)
       glm::vec3(0, 0, 0), // direction - Point of interest: camera looks at this point
       glm::vec3(0, 1, 0)  // right axis - base axis (XYZ)
   );
-  glm::mat4 projection = glm::perspective(
+  glm::mat4 l_projection = glm::perspective(
       glm::radians(70.0f), // fov - Field of view
       1280.0f / 720.0f,    // aspect - Camera's aspect ratio
       0.1f,                // near - Rendering start distance
@@ -25,11 +25,13 @@ void Application::run()
 
   while (!glfwWindowShouldClose(m_window->getWindow()))
   {
+    auto l_deltaTime = m_window->deltaTime();
+
     m_window->clear();                    // Clear window (GLFW)
     glUseProgram(m_shader->getProgram()); // Enable shader program
 
-    glUniformMatrix4fv(l_viewLocation, 1, GL_FALSE, &view[0][0]);
-    glUniformMatrix4fv(l_projectionLocation, 1, GL_FALSE, &projection[0][0]);
+    glUniformMatrix4fv(l_viewLocation, 1, GL_FALSE, &l_view[0][0]);
+    glUniformMatrix4fv(l_projectionLocation, 1, GL_FALSE, &l_projection[0][0]);
 
     glUseProgram(0);    // Disable shader program
     m_window->update(); // Update window (GLFW)

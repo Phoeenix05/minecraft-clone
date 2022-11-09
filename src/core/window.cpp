@@ -43,3 +43,13 @@ void Window::update()
   glfwSwapBuffers(m_window);
   glfwPollEvents();
 }
+
+double Window::deltaTime()
+{
+  static double l_lastTime = 0;
+  double l_currentTime = glfwGetTime();
+  double r_deltaTime = l_currentTime - l_lastTime;
+  l_lastTime = l_currentTime;
+
+  return r_deltaTime;
+}

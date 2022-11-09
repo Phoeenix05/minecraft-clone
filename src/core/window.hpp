@@ -22,6 +22,8 @@ public:
 
   void clear();
   void update();
+
+  double deltaTime();
 };
 
 #endif
