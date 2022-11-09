@@ -12,6 +12,8 @@
 #include <vector>
 
 #include "window.hpp"
+#include "graphics/vertex.hpp"
+#include "graphics/mesh.hpp"
 #include "graphics/shader.hpp"
 
 class Application

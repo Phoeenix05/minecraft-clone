@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-I./src -g -Wall -std=c++17
+CXXFLAGS=-I./src -I./vendor -g -Wall -std=c++17
 LIBS = -lglfw -lglew -framework OpenGL
 
 OUTDIR = build
@@ -9,12 +9,11 @@ OBJ = $(patsubst %,$(OUTDIR)/%,$(_OBJ))
 DEPS = $()
 
 BIN = minecraft-clone
-ARCH = $(shell arch)
 
 $(shell mkdir -p $(OUTDIR))
 
 # SECTION - Executable
-$(BIN)-$(ARCH): $(OBJ)
+$(BIN): $(OBJ)
 	$(CXX) -o $@ build/*.o $(CXXFLAGS) $(LIBS)
 
 # SECTION - Files
@@ -33,13 +32,17 @@ $(OUTDIR)/window.o: src/core/window.cpp src/core/window.hpp
 $(OUTDIR)/shader.o: src/graphics/shader.cpp src/graphics/shader.hpp
 	@echo $<
 	@$(CXX) -c -o $@ $< $(CXXFLAGS)
+
+$(OUTDIR)/mesh.o: src/graphics/mesh.cpp src/graphics/mesh.hpp
+	@echo $<
+	@$(CXX) -c -o $@ $< $(CXXFLAGS)
 # End Files
 
 release: CXXFLAGS += -DRELEASE
-release: $(BIN)-$(ARCH)
+release: $(BIN)
 
 run:
-	@./$(BIN)-$(ARCH)
+	@./$(BIN)
 
 clean:
-	@rm -rf $(BIN)-$(ARCH) build/
+	@rm -rf $(BIN) build/

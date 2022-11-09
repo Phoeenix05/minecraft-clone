@@ -1,7 +1,8 @@
 /build
 /.vscode
 /diagnostics.trace
+/resources/textures
 
 /minecraft-clone*
-/.DS_Store
+/**/.DS_Store
 /code
