@@ -3,7 +3,7 @@ CXXFLAGS=-I./src -I./vendor -g -Wall -std=c++17
 LIBS = -lglfw -lglew -framework OpenGL
 
 OUTDIR = build
-_OBJ = main.o program.o window.o shader.o
+_OBJ = main.o program.o window.o shader.o camera.o
 OBJ = $(patsubst %,$(OUTDIR)/%,$(_OBJ))
 
 DEPS = $()
@@ -26,6 +26,10 @@ $(OUTDIR)/program.o: src/core/program.cpp src/core/program.hpp
 	@$(CXX) -c -o $@ $< $(CXXFLAGS)
 
 $(OUTDIR)/window.o: src/core/window.cpp src/core/window.hpp
+	@echo $<
+	@$(CXX) -c -o $@ $< $(CXXFLAGS)
+
+$(OUTDIR)/camera.o: src/core/camera.cpp src/core/camera.hpp
 	@echo $<
 	@$(CXX) -c -o $@ $< $(CXXFLAGS)
 
